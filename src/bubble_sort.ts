@@ -1,25 +1,28 @@
 export class Sorter {
 
-    private collection: number[];
+    private collection: number[] = [];
 
-    constructor(collection: number[]) {
-        this.collection = collection;
-    }
+    constructor(){};
 
-    bubble_sort() {
+    bubble_sort(collection: number[]) {
 
-        const { length } = this.collection;
+        const { length } = collection;
         let swap: number;
 
         for(let i = 0; i < length; i++) {
-            if(this.collection[i] > this.collection[i + 1]){
-                swap = this.collection[i + 1]
-                this.collection[i + 1] = this.collection[i]
-                this.collection[i] = swap;
+            for (let j = 0; j < length; j++) {
+                if(collection[j] > collection[j + 1]) {
+                    swap = collection[j];
+                    collection[j] = collection[j + 1]
+                    collection[j + 1] = swap;
+                }
             }
         }
 
-        return this.collection;
+        return collection;
     }
 
 }
+
+const x = new Sorter();
+console.log(x.bubble_sort([3, 2, 1]));
